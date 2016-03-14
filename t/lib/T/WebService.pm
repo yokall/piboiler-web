@@ -44,6 +44,28 @@ sub create_post_request {
 	}
 }
 
+sub create_get_request {
+	my $dataref = shift;
+	my $url = shift;
+
+	warn "URL - $url";
+	warn Dumper($dataref);
+
+	my $ua = Mojo::UserAgent->new;
+	my $tx = $ua->get("$url" => json => $dataref);
+
+	warn Dumper($tx);
+
+	if (my $res = $tx->success) {
+		warn $res->body
+	}
+	else {
+	  my $err = $tx->error;
+	  warn "$err->{code} response: $err->{message}" if $err->{code};
+	  warn "Connection error: $err->{message}";
+	}
+}
+
 sub send_webservice_request {
 	my $request = shift;
 

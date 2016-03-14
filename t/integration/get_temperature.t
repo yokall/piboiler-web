@@ -14,11 +14,10 @@ use Data::Dumper;
 my $confref = T::Conf::get_variables();
 my %conf = %$confref;
 
-my $url = $conf{'create_room_url'};
+my $url = $conf{'get_temperature_url'};
 
 my %data = (
-    'room_name' => 'Garage',
-    'sensor_id' => 'TZ',
+    'room_name' => 'Kitchen',
 );
 
-T::WebService::create_post_request(\%data, $url);
+T::WebService::create_get_request(\%data, $url);
