@@ -1,5 +1,3 @@
-USE DATABASE pi_boiler;
-
 DROP TABLE IF EXISTS `temperature`;
 CREATE TABLE `temperature` (
   `_id` int NOT NULL AUTO_INCREMENT,
