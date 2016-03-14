@@ -1,0 +1,70 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use lib '/sites/pi_boiler/lib';
+
+use Mojolicious::Lite;
+use URI::Escape;
+use XML::XML2JSON;
+
+use PiBoiler::Model::Rooms;
+use PiBoiler::Model::Temperature;
+
+
+get '/' => sub {
+    my $c = shift;
+    $c->render(text => qq|
+        <h1>API routes:</h1>
+        <ul>
+            <li>POST /api/create_room - add new room</li>
+            <li>POST /api/create_temperature - add new temperature for room</li>
+
+        </ul>
+    |, format => 'html');
+};
+
+post '/api/create_room' => sub {
+    my $self  = shift;
+
+    warn "IN CREATE ROOM";
+
+    # my $data = $self->req->body;
+    #
+    # $data = qq|{"Room Details":|.$data."}";
+    #
+    # my $json_converter = XML::XML2JSON->new();
+    # my $rooms_hash_ref = XML::XML2JSON::json2obj($data);
+    #
+    # my ($id, $error) = PiBoiler::Model::Rooms::create_room($rooms_hash_ref);
+    #
+    # if ($error) {
+    #     return $self->render(json => {message => "Failed to add room: ".$error}, status => 500);
+    # }
+    # else {
+    #     return $self->render(json => {room_id => $id});
+    # }
+};
+
+# post '/api/create_temperature_sensor' => sub {
+#     my $self  = shift;
+#
+#     my $data = $self->req->body;
+#
+#     $data = qq|{"Temp Details":|.$data."}";
+#
+#     my $json_converter = XML::XML2JSON->new();
+#     my $temp_hash_ref = XML::XML2JSON::json2obj($data);
+#
+#     my $temperature = $temp_hash_ref->{'temp'};
+#     my $date_time = $temp_hash_ref->{'date_time'};
+#     my $sensor_name = $temp_hash_ref->{'sensor_id'};
+#
+#     #Get Room using Sensor Id.
+#     my ($room_id) = PiBoiler::Model::Rooms::query_room($sensor_id);
+#
+#     my ($temp_id, $temp_error) = PiBoiler::Model::Temperature::create_temperature($temperature, $date_time, $sensor_id, $room_id);
+#
+# };
+
+app->start;

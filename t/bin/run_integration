@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use TAP::Harness;
+
+my @test_files = (
+    '../integration/create_room.t',
+);
+
+my %args = (
+    verbosity => 1,
+    color => 1,
+);
+
+my $harness = TAP::Harness->new(\%args);
+$harness->runtests(@test_files);

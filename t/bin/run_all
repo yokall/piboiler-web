@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+print "Running unit tests...\n";
+system('./run_unit');
+
+print "\n\nRunning integration tests...\n";
+system('./run_integration');
