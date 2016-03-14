@@ -18,7 +18,15 @@ get '/' => sub {
         <h1>API routes:</h1>
         <ul>
             <li>POST /api/create_room - add new room</li>
-            <li>POST /api/create_temperature - add new temperature for room</li>
+            <li>POST /api/create_temperature_sensor - set up temp from pi</li>
+
+            <li>GET /api/get_temperature - Get Actual Temp of room</li>
+            <li>GET /api/get_temperature_schedule - Get temperature Schedule for room</li>
+            <li>GET /api/get_scheduled_temperature - Get scheduled temperature for room</li>
+            <li>GET /api/get_all_rooms_details - Get Details for All Rooms</li>
+
+            <li>PUT /api/update_schedule - update temperature schedule</li>
+            <li>DEL /api/delete_room - delete room</li>
 
         </ul>
     |, format => 'html');
@@ -29,42 +37,99 @@ post '/api/create_room' => sub {
 
     warn "IN CREATE ROOM";
 
-    # my $data = $self->req->body;
-    #
-    # $data = qq|{"Room Details":|.$data."}";
-    #
-    # my $json_converter = XML::XML2JSON->new();
-    # my $rooms_hash_ref = XML::XML2JSON::json2obj($data);
-    #
-    # my ($id, $error) = PiBoiler::Model::Rooms::create_room($rooms_hash_ref);
-    #
-    # if ($error) {
-    #     return $self->render(json => {message => "Failed to add room: ".$error}, status => 500);
-    # }
-    # else {
-    #     return $self->render(json => {room_id => $id});
-    # }
+    my $data = $self->req->body;
+
+    $data = qq|{"Room Details":|.$data."}";
+
+    my $json_converter = XML::XML2JSON->new();
+    my $rooms_hash_ref = $json_converter->json2obj($data);
+
+    my ($id, $error) = PiBoiler::Model::Rooms::create_room($rooms_hash_ref);
+
+    if ($error) {
+        return $self->render(json => {message => "Failed to add room: ".$error}, status => 500);
+    }
+    else {
+        return $self->render(json => {room_id => $id});
+    }
 };
 
-# post '/api/create_temperature_sensor' => sub {
-#     my $self  = shift;
-#
-#     my $data = $self->req->body;
-#
-#     $data = qq|{"Temp Details":|.$data."}";
-#
-#     my $json_converter = XML::XML2JSON->new();
-#     my $temp_hash_ref = XML::XML2JSON::json2obj($data);
-#
-#     my $temperature = $temp_hash_ref->{'temp'};
-#     my $date_time = $temp_hash_ref->{'date_time'};
-#     my $sensor_name = $temp_hash_ref->{'sensor_id'};
-#
-#     #Get Room using Sensor Id.
-#     my ($room_id) = PiBoiler::Model::Rooms::query_room($sensor_id);
-#
-#     my ($temp_id, $temp_error) = PiBoiler::Model::Temperature::create_temperature($temperature, $date_time, $sensor_id, $room_id);
-#
-# };
+post '/api/create_temperature_sensor' => sub {
+    my $self  = shift;
+
+    my $data = $self->req->body;
+
+    my $json_converter = XML::XML2JSON->new();
+    my $temp_hash_ref = $json_converter->($data);
+
+    my $temperature = $temp_hash_ref->{'temp'};
+    my $date_time = $temp_hash_ref->{'date_time'};
+    my $sensor_name = $temp_hash_ref->{'sensor_id'};
+
+    #Get Room using Sensor Id.
+    my ($room_id) = PiBoiler::Model::Rooms::query_room_by_sensor($sensor_id);
+
+    my ($temp_id, $temp_error) = PiBoiler::Model::Temperature::create_temperature($temperature, $date_time, $sensor_id, $room_id);
+
+};
+
+get '/api/get_temperature' => sub {
+    my $self  = shift;
+
+    warn "IN Get Temperature";
+
+    my $data = $self->req->body;
+
+    my $json_converter = XML::XML2JSON->new();
+    my $temperature_hash_ref = $json_converter->json2obj($data);
+
+    my $room_name = $temperature_hash_ref->{'room_name'};
+
+    my ($room_id, $error) = PiBoiler::Model::Rooms::query_room_by_name($room_name);
+
+    my $temp_ref = PiBoiler::Model::Temperature::query_temperature_details_by_room_id($room_id);
+
+    if ($error) {
+        return $self->render(json => {message => "Failed to add room: ".$error}, status => 500);
+    }
+    else {
+        return $self->render(json => {room_id => $id});
+    }
+};
+
+get '/api/get_all_rooms_details' => sub {
+    my $self  = shift;
+
+    warn "IN Get All Temperatures";
+
+    my $data = $self->req->body;
+
+    my $json_converter = XML::XML2JSON->new();
+    my $temperature_hash_ref = $json_converter->json2obj($data);
+
+    my %temperature_hash = %{$temperature_hash_ref};
+
+    my %room_info;
+    my %all_details;
+    foreach my $room_name (keys %temperature_hash) {
+        my ($room_id, $error) = PiBoiler::Model::Rooms::query_room_by_name($room_name);
+        unless($error) {
+            $room_info{$room_name} = $room_id;
+        }
+    }
+
+    foreach my $room_name (keys %room_info) {
+        my $room_id = $room_info{$room_name};
+        my ($temp_info, $error) = PiBoiler::Model::Temperature::query_temperature_details($room_id);
+        $all_details{$room_name} = $temp_info;
+    }
+
+    if ($error) {
+        return $self->render(json => {message => "Failed to add room: ".$error}, status => 500);
+    }
+    else {
+        return $self->render(json => \%all_details);
+    }
+};
 
 app->start;
