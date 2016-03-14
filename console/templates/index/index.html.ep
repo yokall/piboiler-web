@@ -1,12 +1,35 @@
 % layout 'default';
 <div class="main-page">
-  <h1>PiBoiler</h1>
-  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+  <h1 style="align: center;"><strong>PiBoiler</strong></h1>
   <div class="row">
+      <table class="table table-striped">
+          <th>Room</th>
+          <th>Current Target Temp</th>
+          <th>Current Temp</th>
+          <th>Actions</th>
+          <tr>
+              <td>Test Room</td>
+              <td>17</td>
+              <td>18</td>
+              <td>
+                  <form action="edit/:id" method="get">
+                      <input type="submit" value="Edit"></input>
+                  </form>
+                  <form action="delete/:id" method="post">
+                      <input type="submit" value="Delete"></input>
+                  </form>
+              </td>
+          % if ($room_data) {
+
+          % }
+      </table>
   </div>
-  <div class="row>">
-     <form action="add_room" method="get">
-        <button class="btn btn-default" type="submit">Add Room</button>
+  <div class="row">
+     <form class="form-inline" action="pi_boiler/add_room" method="get" style="width: auto;">
+        <button class="btn btn-default" type="submit" style="width: auto;">Add Room</button>
     </form>
+    <form action="pi_boiler/stats" method="get" style="width: auto;">
+       <button class="btn btn-default" type="submit" style="width: auto;">Statistics</button>
+   </form>
   </div>
 </div>

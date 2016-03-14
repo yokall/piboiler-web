@@ -1,0 +1,26 @@
+% layout 'default';
+<h4>Edit Schedule</h4>
+<div class="form-group">
+  <label for="sensorID">Schedule 1 Time</label>
+  <input type="select" name="target_temp"  id="targetTime1" style="width: auto; margin-right: 15px;">
+  <label for="sensorID">Schedule 1 Temperature</label>
+  <input type="select" name="target_temp" id="targetTemp1" style="width: auto;">
+</div>
+<div class="form-group">
+  <label for="sensorID">Schedule 2 Time</label>
+  <input type="select" name="target_time2"id="targetTime2" style="width: auto; margin-right: 15px;">
+  <label for="sensorID">Schedule 2 Temperature</label>
+  <input type="select" name="target_temp2" id="targetTemp2" style="width: auto;">
+</div>
+<div class="form-group">
+  <label for="sensorID">Schedule 3 Time</label>
+  <input type="select" name="target_time3"id="targetTime3" style="width: auto; margin-right: 15px;">
+  <label for="sensorID">Schedule 3 Temperature</label>
+  <input type=select name="target_temp3" id="targetTemp3" style="width: auto;">
+</div>
+<div class="form-group">
+  <label for="sensorID">Schedule 4 Time</label>
+  <input type="select" name="target_time4"id="targetTime4" style="width: auto; margin-right: 15px;">
+  <label for="sensorID">Schedule 4 Temperature</label>
+  <input type="select" name="target_temp4" id="targetTemp4" style="width: auto;">
+</div>
