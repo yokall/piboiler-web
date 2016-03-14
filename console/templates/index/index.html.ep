@@ -1,0 +1,12 @@
+% layout 'default';
+<div class="main-page">
+  <h1>PiBoiler</h1>
+  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+  <div class="row">
+  </div>
+  <div class="row>">
+     <form action="add_room" method="get">
+        <button class="btn btn-default" type="submit">Add Room</button>
+    </form>
+  </div>
+</div>

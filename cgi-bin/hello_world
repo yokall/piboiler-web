@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+#
+# The traditional first program.
+
+# Strict and warnings are recommended.
+# Print a message.
+
+print "Content-type:text/html\n\n";
+print "Hello, World!\n";
