@@ -1,0 +1,28 @@
+% layout 'default';
+<form action="add_room" method="post">
+  <div class="form-group">
+    <label for="roomName">Room Name</label>
+    <input type="text" name="room_name" class="form-control" id="roomName" placeholder="Room Name">
+  </div>
+  <div class="form-group">
+    <label for="sensorID">Sensor ID</label>
+    <input type="text" name="sensor_id" class="form-control" id="sensorID" placeholder="Sensor ID">
+  </div>
+  <div class="form-group">
+    <label for="sensorID">Schedule 1 Time</label>
+    <input type="text" name="target_temp" class="form-control" id="targetTime1" style="width: auto;">
+  </div>
+  <div class="form-group">
+    <label for="sensorID">Schedule 1 Temperature</label>
+    <input type="text" name="target_temp" class="form-control" id="targetTemp1" style="width: auto;">
+  </div>
+  <div class="form-group">
+    <label for="sensorID">Schedule 2 Time</label>
+    <input type="text" name="target_emp" class="form-control" id="targetTime2" style="width: auto;">
+  </div>
+  <div class="form-group">
+    <label for="sensorID">Schedule 2 Temperature</label>
+    <input type="text" name="target_temp" class="form-control" id="targetTemp2" style="width: auto;">
+  </div>
+  <button type="submit" class="btn btn-default">Create Room</button>
+</form>
