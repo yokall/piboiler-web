@@ -3,14 +3,12 @@ use Mojo::Base 'Mojolicious::Controller';
 
 sub add {
     my $self = shift;
-
-    return $self->render;
 }
 
 sub add_post {
     my $self = shift;
 
-    return $self->redirect_to('index');
+    return $self->redirect_to('/');
 }
 
 1;

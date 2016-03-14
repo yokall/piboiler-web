@@ -11,8 +11,8 @@ sub startup {
   my $r = $self->routes;
   $r->any('/')->to('index#index');
 
-  $r->get('/add_room')->to('Rooms#add');
-  $r->post('/add_room')->to('Rooms#add_post');
+  $r->get('/add_room')->to('rooms#add');
+  $r->post('/add_room')->to('rooms#add_post');
 
 }
 
