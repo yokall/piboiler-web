@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `_id` int NOT NULL AUTO_INCREMENT,
   `room_name` varchar(200) COLLATE utf8_bin DEFAULT NULL,
-  `sensor_id` int DEFAULT NULL,
+  `sensor_id` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
