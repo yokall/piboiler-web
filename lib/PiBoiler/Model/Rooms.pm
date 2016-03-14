@@ -20,7 +20,7 @@ sub create_room {
 
     $create_room_sth->execute($room_name, $sensor_id);
 
-    my $id = $create_room_sth->(mysql_insertid);
+    my $id = $create_room_sth->{mysql_insertid};
 
     my $error;
 
@@ -35,9 +35,13 @@ sub create_room {
 sub query_room_by_sensor {
     my $sensor_id = shift;
 
+    warn "sensor_id $sensor_id";
+
     $query_room_id_by_sensor_sth->execute($sensor_id);
 
     my $room_id = $query_room_id_by_sensor_sth->fetchrow_array();
+
+    warn "Room Id $room_id";
 
     my $error;
 
