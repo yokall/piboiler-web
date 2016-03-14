@@ -1,4 +1,4 @@
--- Day parts - Bathroom - Monday
+-- Day parts - Living room - Monday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Monday', _id, '07:00', '21.00'
 FROM temperature_plan
@@ -19,7 +19,7 @@ SELECT 'Monday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Tuesday
+-- Day parts - Living room - Tuesday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Tuesday', _id, '07:00', '21.00'
 FROM temperature_plan
@@ -40,7 +40,7 @@ SELECT 'Tuesday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Wednesday
+-- Day parts - Living room - Wednesday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Wednesday', _id, '07:00', '21.00'
 FROM temperature_plan
@@ -61,7 +61,7 @@ SELECT 'Wednesday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Thursday
+-- Day parts - Living room - Thursday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Thursday', _id, '07:00', '21.00'
 FROM temperature_plan
@@ -82,7 +82,7 @@ SELECT 'Thursday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Friday
+-- Day parts - Living room - Friday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Friday', _id, '07:00', '21.00'
 FROM temperature_plan
@@ -103,7 +103,7 @@ SELECT 'Friday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Saturday
+-- Day parts - Living room - Saturday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Saturday', _id, '09:00', '21.00'
 FROM temperature_plan
@@ -124,7 +124,7 @@ SELECT 'Saturday', _id, '21:00', '12.00'
 FROM temperature_plan
 WHERE description = 'Living room default plan';
 
--- Day parts - Bathroom - Sunday
+-- Day parts - Living room - Sunday
 INSERT INTO day_part (`day_name`, `temperature_plan_id`, `start_time`, `target_temperature`)
 SELECT 'Sunday', _id, '09:00', '21.00'
 FROM temperature_plan
