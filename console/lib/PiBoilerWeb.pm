@@ -14,6 +14,11 @@ sub startup {
   $r->get('/add_room')->to('rooms#add');
   $r->post('/add_room')->to('rooms#add_post');
 
+  $r->get('/edit/:id')->to('rooms#edit');
+  $r->post('/edit/:id')->to('rooms#edit_post');
+
+  $r->get('/delete/:id')->to('rooms#delete');
+
 }
 
 1;

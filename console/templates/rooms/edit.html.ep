@@ -1,5 +1,13 @@
 % layout 'default';
-<h4>Edit Schedule</h4>
+<h4>Edit Room</h4>
+<div class="form-group">
+  <label for="sensorID">Sensor ID</label>
+  <input type="text" name="sensor_id" value="<%= $sensor_id %>" class="form-control" id="sensorID">
+</div>
+<div class="form-group">
+  <label for="roomName">Room Name</label>
+  <input type="text" name="room_name" value="<%= $room_name %>"  class="form-control" id="roomName">
+</div>
 <div class="form-group">
   <label for="sensorID">Schedule 1 Time</label>
   <input type="select" name="target_temp"  id="targetTime1" style="width: auto; margin-right: 15px;">

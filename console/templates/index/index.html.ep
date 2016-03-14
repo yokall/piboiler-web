@@ -12,10 +12,10 @@
               <td>17</td>
               <td>18</td>
               <td>
-                  <form action="edit/:id" method="get">
+                  <form action="edit/5" method="get">
                       <input type="submit" value="Edit"></input>
                   </form>
-                  <form action="delete/:id" method="post">
+                  <form action="delete/5" method="post">
                       <input type="submit" value="Delete"></input>
                   </form>
               </td>
@@ -25,10 +25,10 @@
       </table>
   </div>
   <div class="row">
-     <form class="form-inline" action="pi_boiler/add_room" method="get" style="width: auto;">
+     <form class="form-inline" action="add_room" method="get" style="width: auto;">
         <button class="btn btn-default" type="submit" style="width: auto;">Add Room</button>
     </form>
-    <form action="pi_boiler/stats" method="get" style="width: auto;">
+    <form action="stats" method="get" style="width: auto;">
        <button class="btn btn-default" type="submit" style="width: auto;">Statistics</button>
    </form>
   </div>
